@@ -1,0 +1,72 @@
+﻿@model List<RazorSyntaxFrontEnd.Models.UserModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+
+    <style>
+        .label1 {
+            font-size: 24px;
+            font-family: 'Roboto Slab';
+            font-weight: bold;
+            color: chocolate;
+            display: block;
+        }
+
+        #label2 {
+            font-size: 20px;
+            font-family: 'Times New Roman';
+            color: blueviolet;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Customer Table</h1>
+        @Html.Label("Current Customers: ", new { @class = "label1", @id = "label2" })
+
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td>@u.Name</td>
+                    <td>@Html.DisplayFor(modelItem => u.EmailAdress) </td>
+                    <td>@u.PhoneNumber</td>
+                </tr>
+            }
+
+        </table>
+
+        @Html.ActionLink("Go Back", "index","Home")
+
+    </div>
+</body>
+</html>
