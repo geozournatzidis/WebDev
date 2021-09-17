@@ -1,0 +1,63 @@
+﻿@model EntityBondGadgeCollectiont.Models.GadgetModel
+
+@{
+    ViewBag.Title = "SearchForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchForm</h2>
+
+<p>Search Name</p>
+@using (Html.BeginForm("SearchForName", "Gadgets"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>GadgetModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="SearchPhrase">Search in the name</label>
+                <input type="text" name="SearchPhrase" id="SearchPhrase" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<p>Search Description</p>
+@using (Html.BeginForm("SearchForDescription", "Gadgets"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>GadgetModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <label for="SearchPhrase">Search in the Description</label>
+                <input type="text" name="SearchPhrase" id="SearchPhrase" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
